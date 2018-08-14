@@ -219,17 +219,7 @@ window.onload = function () {
 
 
 
-    var c = true;
-    grow.onclick = function () {
-        if (c) {
-            volume.style.setProperty('display', 'block');
-            c = false;
-        } else {
-            volume.style.setProperty('display', 'none');
-            c = true;
-        }
-    };
-
+    
 
     /*歌单*/
     var list = document.getElementById('list');
