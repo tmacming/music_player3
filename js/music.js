@@ -1,5 +1,5 @@
 		
-window.onload = function () {
+
     var mobileWidth = window.innerWidth;
     var mobileHeight = window.innerHeight;
     document.body.style.width = mobileWidth + 'px';
@@ -372,6 +372,6 @@ window.onload = function () {
                 }
             }
         }
-    })
+    });
 
-};
+
