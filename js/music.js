@@ -1,5 +1,5 @@
-		
 
+window.onload = function () {
     var mobileWidth = window.innerWidth;
     var mobileHeight = window.innerHeight;
     document.body.style.width = mobileWidth + 'px';
@@ -25,7 +25,6 @@
     var out = document.getElementById('out');
 
     audio.volume = 0.5;
-    drag.style.left = (volume.clientWidth / 2) - (drag.offsetWidth / 2) + 'px';
     pan.style.animationPlayState = 'paused';
 
 
@@ -210,29 +209,15 @@
         audio.currentTime = audio.duration * ((ev.clientX - progress.offsetLeft) / progress.clientWidth);
     };
 
-
-    drag.onmousedown = function (e) {
+     //音量
+     var volume_1 = document.getElementById('volume_1');
+    volume_1.onclick = function (e) {
         var ev = e || window.event;
-        var constant = ev.clientX - this.offsetLeft;
-        document.onmousemove = function (e) {
-            var ev = e || window.event;
-            var changeLeft = ev.clientX - constant;
-            var max = volume.clientWidth - drag.offsetWidth;
-            var min = volume.offsetLeft;
-            if (changeLeft > max) {
-                changeLeft = max;
-            } else if (changeLeft < min) {
-                changeLeft = min;
-            }
-            drag.style.left = changeLeft + 'px';
-            audio.volume = drag.offsetLeft / max;
-        };
-        document.onmouseup = function () {
-            this.onmousemove = null;
-            this.onmouseup = null;
-        };
-        return false;
+        volume.style.width = (ev.clientX - volume_1.offsetLeft) / volume_1.clientWidth * 100 + '%';
+        audio.volume = audio.volume * ((ev.clientX - volume_1.offsetLeft) / volume_1.clientWidth);
     };
+
+
 
     var c = true;
     grow.onclick = function () {
@@ -372,6 +357,6 @@
                 }
             }
         }
-    });
+    })
 
-
+};
