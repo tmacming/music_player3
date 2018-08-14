@@ -1,1 +1,72 @@
-<!doctype html><html lang="en"><head><meta http-equiv="content-type"  content="text/html"  charset="UTF-8"><meta name="viewport"    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="css/music_nav.css"/><link rel="stylesheet" href="css/music_center.css"/><link rel="stylesheet" href="css/music_tail.css"/><script src="jquery/jquery-3.3.1.min.js" ></script><title>音乐播放器</title></head><body><div class="nav"><div class="nav_left"><img src="img/left.png" alt=""/></div><div class="nav_centre"><p id="song_name">烟火里的尘埃</p></div><div class="nav_right"><a href="http://localhost:63342/%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/one.html"><img src="img/home.png" alt=""/></a></div></div><div class="center"><div class="center_pic"><div class="center_pan" id="pan"><img id="pan_img" src="img/music_2.png" alt=""/></div></div><div class="lyric" id="lyric">只有我守着安静的沙漠 等待着花开</div></div><div class="tail"><audio src="music/music_2.mp3" id="audio"></audio><div class="tail_1"><div class="tail_1_play" id="changeTime">00:00</div><div class="progress" id="progress"><div class="increase" id="increase"><div class="bar"></div></div></div><div class="tail_1_end" id="endTime"></div></div><div class="tail_2"><div class="tail_2_right" id="back"><img src="img/vertical right.png" alt=""/></div><div class="tail_2_play" id="btn"><img id="btn_1" src="img/play-circle.png" alt=""/></div><div class="tail_2_left" id="forward"><img src="img/vertical left.png" alt=""/></div></div><div class="tail_3"><div class="tail_3_way grow" id="play_way"><img id="way" src="img/order.png" alt=""/></div><div class="more grow" id="more"><img src="img/more.png" alt=""/></div></div><div class="tail_4" id="grow"><div class="tail_4_volume tail"><img src="img/volume.png" alt=""/></div><div class="tail_4_drag tail"><div class="volume " id="volume"><div id="drag" class="drag"></div></div></div></div></div><div class="music_list" id="list"><div class="list" id="list_1"><text>1</text>&nbsp;再也没有</div><div class="list" id="list_2"><text>2</text>&nbsp;追光者</div><div class="list" id="list_3"><text>3</text>&nbsp;烟火里的尘埃</div><div class="list" id="list_4"><text>4</text>&nbsp;起风了</div><div class="list list_5" id="out">关闭</div></div><script language="JavaScript" type="text/javascript" src="js/music.js" charset="gbk"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type"  content="text/html"  charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/music_nav.css"/>
+    <link rel="stylesheet" href="css/music_center.css"/>
+    <link rel="stylesheet" href="css/music_tail.css"/>
+    <script src="jquery/jquery-3.3.1.min.js" ></script>
+    <title>音乐播放器</title>
+</head>
+<body>
+
+        <div class="nav">
+            <div class="nav_left"><img src="img/left.png" alt=""/></div>
+            <div class="nav_centre"><p id="song_name">烟火里的尘埃</p></div>
+            <div class="nav_right"><a href="http://localhost:63342/%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/one.html"><img src="img/home.png" alt=""/></a></div>
+        </div>
+        <div class="center">
+            <div class="center_pic">
+                <div class="center_pan" id="pan">
+                    <img id="pan_img" src="img/music_2.png" alt=""/>
+                </div>
+            </div>
+            <div class="lyric" id="lyric">只有我守着安静的沙漠 等待着花开</div>
+        </div>
+
+
+        <div class="tail">
+            <audio src="music/music_2.mp3" id="audio"></audio>
+            <div class="tail_1">
+               <div class="tail_1_play" id="changeTime">00:00</div>
+                <div class="progress" id="progress">
+                    <div class="increase" id="increase">
+                        <div class="bar"></div>
+                    </div>
+                </div>
+                <div class="tail_1_end" id="endTime"></div>
+            </div>
+            <div class="tail_2">
+                <div class="tail_2_right" id="back"><img src="img/vertical right.png" alt=""/></div>
+                <div class="tail_2_play" id="btn"><img id="btn_1" src="img/play-circle.png" alt=""/></div>
+                <div class="tail_2_left" id="forward"><img src="img/vertical left.png" alt=""/></div>
+            </div>
+            <div class="tail_3">
+                <div class="tail_3_way grow" id="play_way"><img id="way" src="img/order.png" alt=""/></div>
+                <div class="more grow" id="more"><img src="img/more.png" alt=""/></div>
+            </div>
+            <div class="tail_4" id="grow">
+                <div class="tail_4_volume tail">
+                    <img src="img/volume.png" alt=""/>
+                </div>
+                <div class="tail_4_drag tail">
+                    <div class="volume " id="volume">
+                    <div id="drag" class="drag"></div>
+                </div></div>
+            </div>
+
+        </div>
+        <div class="music_list" id="list">
+            <div class="list" id="list_1"><text>1</text>&nbsp;再也没有</div>
+            <div class="list" id="list_2"><text>2</text>&nbsp;追光者</div>
+            <div class="list" id="list_3"><text>3</text>&nbsp;烟火里的尘埃</div>
+            <div class="list" id="list_4"><text>4</text>&nbsp;起风了</div>
+            <div class="list list_5" id="out">关闭</div>
+        </div>
+
+
+      <script language="JavaScript" type="text/javascript" src="js/music.js" charset="gbk"></script>
+</body>
+</html>
