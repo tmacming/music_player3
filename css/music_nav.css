@@ -1,0 +1,38 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+html,body {
+    width: 100vw;
+    height: 100vw;
+    background: -webkit-radial-gradient(#313131,#232322,#020202) ;
+    font-family: Helvetica;
+}
+
+.nav{
+    width: 100vw;
+    height: 15vw;
+    background-color: rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.nav_centre{
+    margin-top: 4vw;
+    color: white;
+    font-size: 5vw;
+}
+.nav_left{
+    margin: 2vw 0 0 2vw;
+}
+.nav_right {
+    margin: 2vw 2vw 0 0;
+}
+.nav_left img {
+    width: 12vw;
+    height: 12vw;
+}
+.nav_right img{
+    width: 12vw;
+    height: 12vw;
+}

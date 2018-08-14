@@ -1,0 +1,118 @@
+
+*{
+    padding: 0;
+    margin: 0;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+    font-family: fantasy; 
+    position: relative;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.clearFloat:after{
+    content: "";
+    height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+.clearFloat{
+    zoom: 1;
+}
+.nav_1{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 68px;
+    background-color: rgba(0,0,0,0.2);
+    position: absolute;
+    top: 0;
+    font-size: 20px;
+    z-index: 200;
+}
+.nav_button img{
+    margin-top: 11px;
+    padding-right: 15px;
+    height: 46px;
+    width: 55px;
+}
+
+.nav_a1{
+    margin-left: 13px;
+    margin-top: 11px;
+    font-size: 30px;
+    float: left;
+}
+.nav_button{
+    float: right;
+}
+.nav_menu{
+    margin-top: 1%;
+    margin-left: 60%;
+    text-align: center;
+    width: 40%;
+    font-size: 28px;
+    float: right;
+    background-color: rgba(0,0,0,0.2);
+    display: none;
+}
+
+.no_1{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/*µÚÒ»ÆÁ*/
+.one{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: -webkit-radial-gradient(#313131,#232322,#020202) ;
+    z-index: 100;
+}
+.one p{
+    font-size: 40px;
+    color: #FFFFFF;
+    text-align: center;
+}
+.one_p{
+    padding-top: 50%;
+}
+.one_a{
+    display: block;
+    height: 100px;
+    width: 100px;
+    margin-left: 35%;
+    margin-top: 20%;
+    border: 2px solid white;
+    border-radius: 50%;
+    position: relative;
+
+}
+.one_img img{
+    height: 45px;
+    width: 54px;
+    position: absolute;
+    margin-left: 23px;
+    margin-top: 6px;
+    -webkit-animation:mymove 2s infinite;
+
+}
+@keyframes mymove
+{
+    from {top:0px;}
+    to {top:48px;}
+}
+
+@-webkit-keyframes mymove /*Safari and Chrome*/
+{
+    from {top:0px;}
+    to {top:48px;}
+}
+

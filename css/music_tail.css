@@ -1,0 +1,160 @@
+.tail {
+    -webkit-display:flex;
+    display: flex;
+    -webkit-flex-direction:column;
+    flex-direction: column;
+    -webkit-justify-content: center;
+    justify-content: center;
+    padding-top: 8vw;
+}
+
+/*进度条*/
+.tail_1 {
+    width: 100vw;
+    -webkit-display: flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    color: white;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin-bottom: 3vw;
+}
+.tail_1 .progress{
+    width: 65vw;
+    height: 1vw;
+    margin: 6px 3vw 0 3vw;
+    background-color: white;
+    border-radius: 2vw;
+    cursor: pointer;
+    box-sizing: border-box;
+
+}
+.increase{
+    width: 0;
+    height: 1vw;
+    background-color: gray;
+    position: relative;
+    border-radius: 2vw;
+}
+.tail_1 .progress .increase .bar{
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+    top: -2vw;
+    right: -4vw;
+    background-color: white;
+    position: absolute;
+}
+/*播放 快进 快退*/
+.tail_2 {
+    -webkit-display: flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: center;
+    justify-content: center;
+
+}
+.tail_2 img{
+    height: 15vw;
+    width: 15vw;
+}
+.tail_2_play{
+    margin: 0 14vw 0 14vw;
+}
+
+
+/*下载 循环*/
+.tail_3 {
+    -webkit-display: flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin-left: 25vw;
+    margin-bottom: 5vw;
+}
+.tail_3 img{
+    height: 13vw;
+    width: 13vw;
+}
+.grow{
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+}
+
+.tail_4 img {
+    height: 15vw;
+    width: 15vw;
+}
+
+.tail_4 {
+    -webkit-display:flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin-top:  -14vw;
+    margin-left: 30vw;
+}
+
+.tail {
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+}
+.tail_4_drag{
+    margin-left: -25vw;
+}
+.volume {
+    height: 2vw;
+    width: 32vw;
+    border: 1px solid black;
+    background-color: white;
+    position: relative;
+    border-radius: 20vw;
+    box-sizing: border-box;
+    margin-left: 2vw;
+    /*display: none;*/
+
+}
+
+.drag {
+    width: 5vw;
+    height: 5vw;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+
+    top: -2vw;
+
+}
+
+/*//歌单*/
+
+.music_list{
+    position: relative;
+    display: none;
+    flex-direction: column;
+    width: 100vw;
+    height: 65vw;
+    margin-top: -66vw;
+    background-color: rgba(0,0,0,0.9);
+    color: white;
+}
+
+.list{
+
+    margin: 0 auto;
+    font-size: 6vw;
+    flex-grow: 1;
+}
+.list_5{
+    width: 67vw;
+    height: 5vw;
+    text-align: center;
+    background-color: white;
+    color: black;
+}
