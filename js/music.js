@@ -1,2 +1,377 @@
-window.onload=function(){var mobileWidth=window.innerWidth;var mobileHeight=window.innerHeight;document.body.style.width=mobileWidth+"px";document.body.style.height=mobileHeight+"px";var btn=document.getElementById("btn");var btn_1=document.getElementById("btn_1");var back=document.getElementById("back");var forward=document.getElementById("forward");var progress=document.getElementById("progress");var increase=document.getElementById("increase");var changeTime=document.getElementById("changeTime");var endTime=document.getElementById("endTime");var play_way=document.getElementById("play_way");var way=document.getElementById("way");var volume=document.getElementById("volume");var drag=document.getElementById("drag");var grow=document.getElementById("grow");var pan=document.getElementById("pan");var pan_img=document.getElementById("pan_img");var more=document.getElementById("more");var out=document.getElementById("out");audio.volume=0.5;drag.style.left=(volume.clientWidth/2)-(drag.offsetWidth/2)+"px";pan.style.animationPlayState="paused";var myMusic=new Array();myMusic[0]="music/music_0.mp3";myMusic[1]="music/music_1.mp3";myMusic[2]="music/music_2.mp3";myMusic[3]="music/music_3.mp3";var myImg=new Array();myImg[0]="img/music_0.png";myImg[1]="img/music_1.png";myImg[2]="img/music_2.png";myImg[3]="img/music_3.png";var mySongName=new Array();mySongName[0]="ÔÙÒ²Ã»ÓÐ";mySongName[1]="×·¹âÕß";mySongName[2]="ÑÌ»ð»ðÀïµÄ³¾°£";mySongName[3]="Æð·çÁË";function gecurrentmusiccindex(){var p=$("#audio").attr("src");for(var i=0;i<4;i++){if(p==myMusic[i]){return i}}}var myX=new Array();myX[0]="img/order.png";myX[1]="img/circulation.png";var a=true;play_way.onclick=function(){if(a){way.src="img/circulation.png";a=false}else{way.src="img/order.png";a=true}};function toTime(t){var minutes=parseInt(t/60,10);var seconds=parseInt(t%60,10);if(minutes<10){minutes="0"+minutes}if(seconds<10){seconds="0"+seconds}return minutes+":"+seconds}var waitTime=setInterval(function(){if(audio.readyState>2){endTime.innerHTML=toTime(audio.duration)}},10);audio.addEventListener("timeupdate",function(){if(audio.currentTime==audio.duration){var d=$("#way").attr("src");if(d==myX[0]){var b=gecurrentmusiccindex();audio.src=myMusic[(b+1)%4];song_name.innerHTML=mySongName[(b+1)%4];pan_img.src=myImg[(b+1)%4];endTime.innerHTML=toTime(audio.duration);console.log(audio.duration);increase.style.width=0;pan.style.animationPlayState="running";audio.play()}else{if(d==myX[1]){var c=Math.floor(Math.random(1)*4);audio.src=myMusic[(c+1)%4];song_name.innerHTML=mySongName[(c+1)%4];pan_img.src=myImg[(c+1)%4];endTime.innerHTML=toTime(audio.duration);console.log(audio.duration);increase.style.width=0;pan.style.animationPlayState="running";audio.play()}}}changeTime.innerHTML=toTime(audio.currentTime);increase.style.width=(audio.currentTime/audio.duration)*100+"%"});forward.onclick=function(){var d=$("#way").attr("src");if(d==myX[0]){var b=gecurrentmusiccindex();audio.src=myMusic[(b+1)%4];song_name.innerHTML=mySongName[(b+1)%4];pan_img.src=myImg[(b+1)%4];increase.style.width=0;pan.style.animationPlayState="running";audio.play();btn_1.src="img/time out.png"}else{if(d==myX[1]){var c=Math.floor(Math.random(1)*4);audio.src=myMusic[(c+1)%4];song_name.innerHTML=mySongName[(c+1)%4];pan_img.src=myImg[(c+1)%4];increase.style.width=0;pan.style.animationPlayState="running";audio.play();btn_1.src="img/time out.png"}}};back.onclick=function(){var d=$("#way").attr("src");console.log(audio.duration);if(d==myX[0]){var b=gecurrentmusiccindex();audio.src=myMusic[(b+4-1)%4];song_name.innerHTML=mySongName[(b+4-1)%4];pan_img.src=myImg[(b+4-1)%4];increase.style.width=0;pan.style.animationPlayState="running";audio.play();btn_1.src="img/time out.png"}else{if(d==myX[1]){var c=Math.floor(Math.random(1)*4);audio.src=myMusic[(c+4-1)%4];song_name.innerHTML=mySongName[(c+4-1)%4];pan_img.src=myImg[(c+4-1)%4];increase.style.width=0;pan.style.animationPlayState="play";audio.play();btn_1.src="img/time out.png"}}};var isPlay=true;btn.onclick=function(){if(isPlay){audio.play();btn_1.src="img/time out.png";pan.style.animationPlayState="running";isPlay=false}else{audio.pause();pan.style.animationPlayState="paused";btn_1.src="img/play-circle.png";isPlay=true}};progress.onclick=function(e){var ev=e||window.event;increase.style.width=(ev.clientX-progress.offsetLeft)/progress.clientWidth*100+"%";audio.currentTime=audio.duration*((ev.clientX-progress.offsetLeft)/progress.clientWidth)};drag.onmousedown=function(e){var ev=e||window.event;var constant=ev.clientX-this.offsetLeft;document.onmousemove=function(e){var ev=e||window.event;var changeLeft=ev.clientX-constant;var max=volume.clientWidth-drag.offsetWidth;var min=volume.offsetLeft;if(changeLeft>max){changeLeft=max}else{if(changeLeft<min){changeLeft=min}}drag.style.left=changeLeft+"px";audio.volume=drag.offsetLeft/max};document.onmouseup=function(){this.onmousemove=null;this.onmouseup=null};return false};var c=true;grow.onclick=function(){if(c){volume.style.setProperty("display","block");
-    c=false}else{volume.style.setProperty("display","none");c=true}};var list=document.getElementById("list");more.onclick=function(){$("#list").fadeToggle(1000);list.style.setProperty("display","flex")};out.onclick=function(){list.style.setProperty("display","none")};var num=document.getElementById("num");list.onclick=function(){var tt=$(this).find(".num").text();console.log(tt)};var list_1=document.getElementById("list_1");var list_2=document.getElementById("list_2");var list_3=document.getElementById("list_3");var list_4=document.getElementById("list_4");list_1.onclick=function(){audio.src=myMusic[0];song_name.innerHTML=mySongName[0];pan_img.src=myImg[0];pan.style.animationPlayState="running";btn_1.src="img/time out.png";audio.play()};list_2.onclick=function(){audio.src=myMusic[1];song_name.innerHTML=mySongName[1];pan_img.src=myImg[1];pan.style.animationPlayState="running";btn_1.src="img/time out.png";audio.play()};list_3.onclick=function(){audio.src=myMusic[2];song_name.innerHTML=mySongName[2];pan_img.src=myImg[2];pan.style.animationPlayState="running";btn_1.src="img/time out.png";audio.play()};list_4.onclick=function(){audio.src=myMusic[3];song_name.innerHTML=mySongName[3];pan_img.src=myImg[3];pan.style.animationPlayState="running";btn_1.src="img/time out.png";audio.play()};$(document).ready(function(){var musicTime=gecurrentmusiccindex();if(musicTime==0){var lrc=[];lrc.push("[00:00.005]ÎÒÔÙÒ²Ã»ÓÐ¶ÔÄãÉúÆø");lrc.push("[00:04.800]ÎÒÔÙÒ²Ã»ÓÐ¶ÔÄãµÄÃØÃÜ");lrc.push("[00:09.000]ÎÒ¾ö¶¨ÎÒÔÙÒ²²»»á°®Äã");lrc.push("[00:14.576]ÒòÎªÄãµÄÐÄ ÒÑ¾­²»ÔÙÕâÀï");lrc.push("[00:29.000]ÒÑ¾­²»ÔÚÕâÀï")}else{if(musicTime==1){var lrc=[];lrc.push("[00:00.005]ÎÒ¿ÉÒÔ¿¿ÔÚÄãÉíºó ÏñÓ°×Ó×·×ÅÃÎÓÎ");lrc.push("[00:05.800]ÎÒ¿ÉÒÔµÈÔÚÕâÂ·¿Ú ²»¹ÜÄã»á²»»á¾­¹ý");lrc.push("[00:12.000]Ã¿µ±ÎÒÎªÄãÌ§ÆðÍ· Á¬ÑÛÀá¶¼¾õµÃ×ÔÓÉ");lrc.push("[00:19.000]ÓÐµÄ°®Ïñ´óÓêäèãûÈ´ÒÀÈ»ÏàÐÅ²Êºç")}else{if(musicTime==2){var lrc=[];lrc.push("[00:00.005]Ö»ÓÐÎÒÊØ×Å°²¾²µÄÉ³Ä® µÈ´ý×Å»¨¿ª");lrc.push("[00:09.000]Ö»ÓÐÎÒ¿´×Å±ðÈËµÄ¿ìÀÖ ¾¹È»»á¸Ð¿®");lrc.push("[00:19.000]¾ÍÈÃÎÒ Ìý×ÅÌì´óµÄµÀÀí");lrc.push("[00:23.876]²»Ô¸ÒâÃ÷°×");lrc.push("[00:29.466]Ö»ÓÐÎÒ Ö»ÊÇÎÒ ºÃÆæ¹Ö");lrc.push("[00:40.046]»¹ÔÚ¸Ð¿®");lrc.push("[03:46.488]·çÕóÕó´µ¹ýÀ´")}else{if(musicTime==3){var lrc=[];lrc.push("[00:00.005]´ÓÇ°³õÊ¶ÕâÊÀ¼ä Íò°ãÁôÁµ");lrc.push("[00:04.000]¿´×ÅÌì±ßËÆÔÚÑÛÇ°");lrc.push("[00:07.000]Ò²¸ÊÔ¸¸°ÌÀµ¸»ðÈ¥×ßËüÒ»±é");lrc.push("[00:11.800]Èç½ñ×ß¹ýÕâÊÀ¼ä Íò°ãÁ÷Á¬");lrc.push("[00:16.800]·­¹ýËêÔÂ²»Í¬²àÁ³");lrc.push("[00:19.800]´ë²»¼°·À´³ÈëÄãµÄÐ¦ÑÕ");lrc.push("[00:24.800]ÎÒÔøÄÑ×Ô°ÎÓÚÊÀ½çÖ®´ó");lrc.push("[00:28.800]Ò²³ÁÄçÓÚÆäÖÐÃÎ»°");lrc.push("[00:32.800]²»µÃÕæ¼Ù ²»×öÕõÔú ²»¾åÐ¦»°");lrc.push("[00:40.800]ÎÒÔø½«Çà´º·­Ó¿³ÉËý");lrc.push("[00:44.000]Ò²ÔøÖ¸¼âµ¯³öÊ¢ÏÄ");lrc.push("[00:50.800]ÐÄÖ®Ëù¶¯ ÇÒ¾ÍËæÔµÈ¥°É")}}}}var myAudio=$("audio")[0];var lrcArr=[];getLrc();function getLrc(){var timeReg=/\[\d{2}:\d{2}\.\d{3}\]/g;var result=[];for(var i=0;i<lrc.length;i++){var time=lrc[i].match(timeReg);var value=lrc[i].replace(timeReg,"");for(var j=0;j<time.length;j++){var t=time[j].slice(1,-1).split(":");var timeArr=parseInt(t[0],10)*60+parseFloat(t[1]);result.push([timeArr,value])}}lrcArr=result;setInterval(showLrc,200)}function showLrc(){var curTime=myAudio.currentTime;for(var i=0;i<lrcArr.length;i++){if((curTime>lrcArr[i][0])&&(curTime<lrcArr[i+1][0])){document.getElementById("lyric").innerHTML=lrcArr[i][1];break}}}})};function echo(stringA,stringB){var hello="ÄãºÃ";alert("hello world")};
+		
+window.onload = function () {
+    var mobileWidth = window.innerWidth;
+    var mobileHeight = window.innerHeight;
+    document.body.style.width = mobileWidth + 'px';
+    document.body.style.height = mobileHeight + 'px';
+
+
+    var btn = document.getElementById('btn');
+    var btn_1 = document.getElementById('btn_1');
+    var back = document.getElementById('back');
+    var forward = document.getElementById('forward');
+    var progress = document.getElementById('progress');
+    var increase = document.getElementById('increase');
+    var changeTime = document.getElementById('changeTime');
+    var endTime = document.getElementById('endTime');
+    var play_way = document.getElementById('play_way');
+    var way = document.getElementById('way');
+    var volume = document.getElementById('volume');
+    var drag = document.getElementById('drag');
+    var grow = document.getElementById('grow');
+    var pan = document.getElementById('pan');
+    var pan_img = document.getElementById('pan_img');
+    var more = document.getElementById('more');
+    var out = document.getElementById('out');
+
+    audio.volume = 0.5;
+    drag.style.left = (volume.clientWidth / 2) - (drag.offsetWidth / 2) + 'px';
+    pan.style.animationPlayState = 'paused';
+
+
+    var myMusic = new Array();
+    myMusic[0] = "music/music_0.mp3";
+    myMusic[1] = "music/music_1.mp3";
+    myMusic[2] = "music/music_2.mp3";
+    myMusic[3] = "music/music_3.mp3";
+
+    var myImg = new Array();
+    myImg[0] = "img/music_0.png";
+    myImg[1] = "img/music_1.png";
+    myImg[2] = "img/music_2.png";
+    myImg[3] = "img/music_3.png";
+
+    var mySongName = new Array();
+    mySongName[0] = "å†ä¹Ÿæ²¡æœ‰";
+    mySongName[1] = "è¿½å…‰è€…";
+    mySongName[2] = "çƒŸç«ç«é‡Œçš„å°˜åŸƒ";
+    mySongName[3] = "èµ·é£Žäº†";
+
+
+    //èŽ·å–å½“å‰æ­Œæ›²æ˜¯é‚£ä¸€é¦–
+    function gecurrentmusiccindex() {
+        var p = $('#audio').attr("src");
+        for (var i = 0; i < 4; i++) {
+            if (p == myMusic[i]) {
+                return i;
+            }
+        }
+    }
+
+    //åˆ‡æ¢æ’­æ”¾æ¨¡å¼
+    var myX = new Array();
+    myX[0] = "img/order.png";
+    myX[1] = "img/circulation.png";
+    var a = true;
+    play_way.onclick = function () {
+        if (a) {
+            way.src = 'img/circulation.png';
+            a = false;
+        } else {
+            way.src = 'img/order.png';
+            a = true;
+        }
+    };
+
+    //å®šä¹‰èŽ·å–æ—¶é—´å‡½æ•°
+    function toTime(t) {
+        //èŽ·å–åˆ†é’Ÿæ•°  è½¬æ¢æˆ10è¿›åˆ¶æ•´æ•°
+        var minutes = parseInt(t / 60, 10);
+        var seconds = parseInt(t % 60, 10);
+        if (minutes < 10) {
+            minutes = '0' + minutes;
+        }
+        if (seconds < 10) {
+            seconds = '0' + seconds;
+        }
+        return minutes + ':' + seconds;
+    }
+
+    //setTimeout ä¸€æ¬¡æ€§å®šæ—¶å™¨
+    var waitTime = setInterval(function () {
+        //readyState è§†é¢‘çŠ¶æ€è¿”å›žå€¼
+        // 0 æ²¡æœ‰è§†é¢‘ä¿¡æ¯
+        // 1 å…ƒæ•°æ®
+        // 2 å½“å‰ä½å­å¯ç”¨
+        // 3 ä¸‹ä¸€å¸§å¯ä»¥çœ‹
+        // 4 éƒ½å¯ä»¥çœ‹
+        if (audio.readyState > 2) {
+            endTime.innerHTML = toTime(audio.duration);
+            //æ¸…é™¤å®šæ—¶å™¨
+            //clearInterval(waitTime);
+        }
+    }, 10);
+    //ç›‘å¬å½“å‰äº‹ä»¶
+    audio.addEventListener("timeupdate", function () {
+        if (audio.currentTime == audio.duration) {
+            var d = $('#way').attr("src");
+            if (d == myX[0]) {
+                var b = gecurrentmusiccindex();
+                audio.src = myMusic[(b + 1) % 4];
+                song_name.innerHTML = mySongName[(b + 1) % 4];
+                pan_img.src = myImg[(b + 1) % 4];
+                endTime.innerHTML = toTime(audio.duration);
+                console.log(audio.duration);
+                increase.style.width = 0;
+                pan.style.animationPlayState = 'running';
+                audio.play();
+            } else if (d == myX[1]) {
+                var c = Math.floor(Math.random(1) * 4);
+                audio.src = myMusic[(c + 1) % 4];
+                song_name.innerHTML = mySongName[(c + 1) % 4];
+                pan_img.src = myImg[(c + 1) % 4];
+                endTime.innerHTML = toTime(audio.duration);
+                console.log(audio.duration);
+                increase.style.width = 0;
+                pan.style.animationPlayState = 'running';
+                audio.play();
+            }
+        }
+        changeTime.innerHTML = toTime(audio.currentTime);
+        increase.style.width = (audio.currentTime / audio.duration) * 100 + "%";
+    });
+
+
+    //æ’­æ”¾ä¸‹ä¸€æ›²
+    forward.onclick = function () {
+
+        var d = $('#way').attr("src");
+        if (d == myX[0]) {
+            var b = gecurrentmusiccindex();
+            audio.src = myMusic[(b + 1) % 4];
+            song_name.innerHTML = mySongName[(b + 1) % 4];
+            pan_img.src = myImg[(b + 1) % 4];
+            increase.style.width = 0;
+            pan.style.animationPlayState = 'running';
+            audio.play();
+            btn_1.src = 'img/time out.png';
+
+        } else if (d == myX[1]) {
+            var c = Math.floor(Math.random(1) * 4);
+            audio.src = myMusic[(c + 1) % 4];
+            song_name.innerHTML = mySongName[(c + 1) % 4];
+            pan_img.src = myImg[(c + 1) % 4];
+            increase.style.width = 0;
+            pan.style.animationPlayState = 'running';
+            audio.play();
+            btn_1.src = 'img/time out.png';
+        }
+
+    };
+
+    back.onclick = function () {
+        var d = $('#way').attr("src");
+        console.log(audio.duration);
+        if (d == myX[0]) {
+            var b = gecurrentmusiccindex();
+            audio.src = myMusic[(b + 4 - 1) % 4];
+            song_name.innerHTML = mySongName[(b + 4 - 1) % 4];
+            pan_img.src = myImg[(b + 4 - 1) % 4];
+            increase.style.width = 0;
+            pan.style.animationPlayState = 'running';
+            audio.play();
+            btn_1.src = 'img/time out.png';
+
+
+        } else if (d == myX[1]) {
+            var c = Math.floor(Math.random(1) * 4);
+            audio.src = myMusic[(c + 4 - 1) % 4];
+            song_name.innerHTML = mySongName[(c + 4 - 1) % 4];
+            pan_img.src = myImg[(c + 4 - 1) % 4];
+            increase.style.width = 0;
+            pan.style.animationPlayState = 'play';
+            audio.play();
+            btn_1.src = 'img/time out.png';
+        }
+    };
+    //æ’­æ”¾æŒ‰é’®
+    var isPlay = true;
+    btn.onclick = function () {
+        if (isPlay) {
+            audio.play();
+            btn_1.src = 'img/time out.png';
+            pan.style.animationPlayState = 'running';
+
+            isPlay = false;
+        } else {
+            audio.pause();
+            pan.style.animationPlayState = 'paused';
+            btn_1.src = 'img/play-circle.png';
+            isPlay = true;
+        }
+
+    };
+
+
+    //ç‚¹å‡»æ—¶é—´è¿›åº¦æ¡å˜åŒ–
+    progress.onclick = function (e) {
+        var ev = e || window.event;
+        increase.style.width = (ev.clientX - progress.offsetLeft) / progress.clientWidth * 100 + '%';
+        audio.currentTime = audio.duration * ((ev.clientX - progress.offsetLeft) / progress.clientWidth);
+    };
+
+
+    drag.onmousedown = function (e) {
+        var ev = e || window.event;
+        var constant = ev.clientX - this.offsetLeft;
+        document.onmousemove = function (e) {
+            var ev = e || window.event;
+            var changeLeft = ev.clientX - constant;
+            var max = volume.clientWidth - drag.offsetWidth;
+            var min = volume.offsetLeft;
+            if (changeLeft > max) {
+                changeLeft = max;
+            } else if (changeLeft < min) {
+                changeLeft = min;
+            }
+            drag.style.left = changeLeft + 'px';
+            audio.volume = drag.offsetLeft / max;
+        };
+        document.onmouseup = function () {
+            this.onmousemove = null;
+            this.onmouseup = null;
+        };
+        return false;
+    };
+
+    var c = true;
+    grow.onclick = function () {
+        if (c) {
+            volume.style.setProperty('display', 'block');
+            c = false;
+        } else {
+            volume.style.setProperty('display', 'none');
+            c = true;
+        }
+    };
+
+
+    /*æ­Œå•*/
+    var list = document.getElementById('list');
+
+    more.onclick = function () {
+        $("#list").fadeToggle(1000);
+        list.style.setProperty('display', 'flex');
+    };
+
+    out.onclick = function () {
+        list.style.setProperty('display', 'none');
+    };
+
+    var num = document.getElementById('num');
+    list.onclick = function () {
+        var tt = $(this).find(".num").text();
+        console.log(tt);
+    };
+
+    var list_1 = document.getElementById('list_1');
+    var list_2 = document.getElementById('list_2');
+    var list_3 = document.getElementById('list_3');
+    var list_4 = document.getElementById('list_4');
+    list_1.onclick = function () {
+        audio.src = myMusic[0];
+        song_name.innerHTML = mySongName[0];
+        pan_img.src = myImg[0];
+        pan.style.animationPlayState = 'running';
+        btn_1.src = 'img/time out.png';
+        audio.play();
+    };
+    list_2.onclick = function () {
+        audio.src = myMusic[1];
+        song_name.innerHTML = mySongName[1];
+        pan_img.src = myImg[1];
+        pan.style.animationPlayState = 'running';
+        btn_1.src = 'img/time out.png';
+        audio.play();
+    };
+    list_3.onclick = function () {
+        audio.src = myMusic[2];
+        song_name.innerHTML = mySongName[2];
+        pan_img.src = myImg[2];
+        pan.style.animationPlayState = 'running';
+        btn_1.src = 'img/time out.png';
+        audio.play();
+    };
+    list_4.onclick = function () {
+        audio.src = myMusic[3];
+        song_name.innerHTML = mySongName[3];
+        pan_img.src = myImg[3];
+        pan.style.animationPlayState = 'running';
+        btn_1.src = 'img/time out.png';
+        audio.play();
+    }
+
+
+
+    $(document).ready(function () {
+        var musicTime = gecurrentmusiccindex();
+        if(musicTime == 0){
+            var lrc = []; //åˆ›å»ºæ­Œè¯æ•°ç»„;
+            lrc.push("[00:00.005]æˆ‘å†ä¹Ÿæ²¡æœ‰å¯¹ä½ ç”Ÿæ°”");
+            lrc.push("[00:04.800]æˆ‘å†ä¹Ÿæ²¡æœ‰å¯¹ä½ çš„ç§˜å¯†");
+            lrc.push("[00:09.000]æˆ‘å†³å®šæˆ‘å†ä¹Ÿä¸ä¼šçˆ±ä½ ");
+            lrc.push("[00:14.576]å› ä¸ºä½ çš„å¿ƒ å·²ç»ä¸å†è¿™é‡Œ");
+            lrc.push("[00:29.000]å·²ç»ä¸åœ¨è¿™é‡Œ");
+        }else if(musicTime == 1){
+            var lrc = []; //åˆ›å»ºæ­Œè¯æ•°ç»„;
+            lrc.push("[00:00.005]æˆ‘å¯ä»¥é åœ¨ä½ èº«åŽ åƒå½±å­è¿½ç€æ¢¦æ¸¸");
+            lrc.push("[00:05.800]æˆ‘å¯ä»¥ç­‰åœ¨è¿™è·¯å£ ä¸ç®¡ä½ ä¼šä¸ä¼šç»è¿‡");
+            lrc.push("[00:12.000]æ¯å½“æˆ‘ä¸ºä½ æŠ¬èµ·å¤´ è¿žçœ¼æ³ªéƒ½è§‰å¾—è‡ªç”±");
+            lrc.push("[00:19.000]æœ‰çš„çˆ±åƒå¤§é›¨æ»‚æ²±å´ä¾ç„¶ç›¸ä¿¡å½©è™¹");
+        }else if(musicTime == 2){
+            var lrc = []; //åˆ›å»ºæ­Œè¯æ•°ç»„;
+            lrc.push("[00:00.005]åªæœ‰æˆ‘å®ˆç€å®‰é™çš„æ²™æ¼  ç­‰å¾…ç€èŠ±å¼€");
+            lrc.push("[00:09.000]åªæœ‰æˆ‘çœ‹ç€åˆ«äººçš„å¿«ä¹ ç«Ÿç„¶ä¼šæ„Ÿæ…¨");
+            lrc.push("[00:19.000]å°±è®©æˆ‘ å¬ç€å¤©å¤§çš„é“ç†");
+            lrc.push("[00:23.876]ä¸æ„¿æ„æ˜Žç™½");
+            lrc.push("[00:29.466]åªæœ‰æˆ‘ åªæ˜¯æˆ‘ å¥½å¥‡æ€ª");
+            lrc.push("[00:40.046]è¿˜åœ¨æ„Ÿæ…¨");
+            lrc.push("[03:46.488]é£Žé˜µé˜µå¹è¿‡æ¥");
+        }else if(musicTime == 3){
+            var lrc = []; //åˆ›å»ºæ­Œè¯æ•°ç»„;
+            lrc.push("[00:00.005]ä»Žå‰åˆè¯†è¿™ä¸–é—´ ä¸‡èˆ¬ç•™æ‹");
+            lrc.push("[00:04.000]çœ‹ç€å¤©è¾¹ä¼¼åœ¨çœ¼å‰");
+            lrc.push("[00:07.000]ä¹Ÿç”˜æ„¿èµ´æ±¤è¹ˆç«åŽ»èµ°å®ƒä¸€é");
+            lrc.push("[00:11.800]å¦‚ä»Šèµ°è¿‡è¿™ä¸–é—´ ä¸‡èˆ¬æµè¿ž");
+            lrc.push("[00:16.800]ç¿»è¿‡å²æœˆä¸åŒä¾§è„¸");
+            lrc.push("[00:19.800]æŽªä¸åŠé˜²é—¯å…¥ä½ çš„ç¬‘é¢œ");
+            lrc.push("[00:24.800]æˆ‘æ›¾éš¾è‡ªæ‹”äºŽä¸–ç•Œä¹‹å¤§");
+            lrc.push("[00:28.800]ä¹Ÿæ²‰æººäºŽå…¶ä¸­æ¢¦è¯");
+            lrc.push("[00:32.800]ä¸å¾—çœŸå‡ ä¸åšæŒ£æ‰Ž ä¸æƒ§ç¬‘è¯");
+            lrc.push("[00:40.800]æˆ‘æ›¾å°†é’æ˜¥ç¿»æ¶Œæˆå¥¹");
+            lrc.push("[00:44.000]ä¹Ÿæ›¾æŒ‡å°–å¼¹å‡ºç››å¤");
+            lrc.push("[00:50.800]å¿ƒä¹‹æ‰€åŠ¨ ä¸”å°±éšç¼˜åŽ»å§");
+        }
+
+        var myAudio = $("audio")[0];
+        var lrcArr = [];
+        getLrc();
+
+        function getLrc() {
+            var timeReg = /\[\d{2}:\d{2}\.\d{3}\]/g;//åŒ¹é…æ—¶é—´çš„æ­£åˆ™è¡¨è¾¾å¼
+            var result = [];
+            for (var i=0;i<lrc.length;i++) {
+                var time = lrc[i].match(timeReg); //èŽ·å–æ­Œè¯é‡Œçš„æ—¶é—´
+                var value = lrc[i].replace(timeReg, ""); //èŽ·å–çº¯æ­Œè¯æ–‡æœ¬
+                for (var j=0;j<time.length;j++ ) {
+                    var t = time[j].slice(1, -1).split(":"); //t[0]åˆ†é’Ÿï¼Œt[1]ç§’
+                    var timeArr = parseInt(t[0], 10) * 60 + parseFloat(t[1]);
+                    result.push([timeArr, value]);//ä»¥[æ—¶é—´(ç§’)ï¼Œæ­Œè¯]çš„å½¢å¼å­˜è¿›result
+                }
+            }
+            lrcArr = result;//è¿™ä¸ªæœ‰ç‚¹å¤šä½™ã€‚ã€‚ã€‚
+            setInterval(showLrc, 200);//è®¾ç½®å®šæ—¶ï¼Œæ¯200æ¯«ç§’æ›´æ–°ä¸€ä¸‹
+        }
+        function showLrc() {
+            var curTime = myAudio.currentTime;//èŽ·å–å½“å‰çš„æ’­æ”¾æ—¶é—´
+            for (var i = 0; i < lrcArr.length; i++) {
+                if ((curTime >lrcArr[i][0])&&(curTime<lrcArr[i+1][0])) {
+                    //æ’­æ”¾æ—¶é—´å¤§äºŽå¯¹åº”æ­Œè¯æ—¶é—´å°äºŽä¸‹ä¸€å¥æ­Œè¯æ—¶é—´å°±æ˜¾ç¤ºå½“å‰æ­Œè¯
+                    document.getElementById("lyric").innerHTML = lrcArr[i][1];
+                    break;//æ‰¾åˆ°å¯¹åº”æ­Œè¯å°±åœï¼Œä¸åœçš„è¯ï¼Œå‘µå‘µã€‚ã€‚ã€‚
+                }
+            }
+        }
+    })
+
+};
