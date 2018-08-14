@@ -8,7 +8,7 @@
     padding-top: 8vw;
 }
 
-/*½ø¶ÈÌõ*/
+/*è¿›åº¦æ¡*/
 .tail_1 {
     width: 100vw;
     -webkit-display: flex;
@@ -46,7 +46,7 @@
     background-color: white;
     position: absolute;
 }
-/*²¥·Å ¿ì½ø ¿ìÍË*/
+/*æ’­æ”¾ å¿«è¿› å¿«é€€*/
 .tail_2 {
     -webkit-display: flex;
     display: flex;
@@ -65,7 +65,7 @@
 }
 
 
-/*ÏÂÔØ Ñ­»·*/
+/*ä¸‹è½½ å¾ªç¯*/
 .tail_3 {
     -webkit-display: flex;
     display: flex;
@@ -97,42 +97,41 @@
     flex-direction: row;
     -webkit-justify-content: center;
     justify-content: center;
-    margin-top:  -14vw;
+    margin-top:  -7vw;
     margin-left: 30vw;
 }
 
-.tail {
-    -webkit-flex-grow: 1;
-    flex-grow: 1;
-}
-.tail_4_drag{
-    margin-left: -25vw;
-}
-.volume {
-    height: 2vw;
-    width: 32vw;
-    border: 1px solid black;
+
+.volume_1 {
+    width: 33vw;
+    height: 1vw;
+    margin: 6px 3vw 0 3vw;
     background-color: white;
-    position: relative;
-    border-radius: 20vw;
+    border-radius: 2vw;
+    cursor: pointer;
+    margin-top: 6vw;
     box-sizing: border-box;
-    margin-left: 2vw;
-    /*display: none;*/
+}
+.volume{
+    width: 15vw;
+    height: 1vw;
+    background-color: gray;
+    position: relative;
+    border-radius: 2vw;
 
 }
-
 .drag {
     width: 5vw;
     height: 5vw;
-    background-color: white;
     border-radius: 50%;
-    position: absolute;
-
     top: -2vw;
+    right: -4vw;
+    background-color: white;
+    position: absolute;
 
 }
 
-/*//¸èµ¥*/
+/*//æ­Œå•*/
 
 .music_list{
     position: relative;
